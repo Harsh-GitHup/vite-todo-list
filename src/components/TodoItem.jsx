@@ -1,17 +1,19 @@
 import PropTypes from 'prop-types';
 
-function TodoItem({ todo, onToggle, onRemove }) {
+function TodoItem({ todo, onToggle, onRemove, hideActions }) {
   return (
     <div className="todo-item">
-      <input
-        type="checkbox"
-        checked={todo.completed}
-        onChange={onToggle}
-      />
+      {!hideActions && (
+        <input
+          type="checkbox"
+          checked={todo.completed}
+          onChange={onToggle}
+        />
+      )}
       <span className={todo.completed ? 'completed' : 'incomplete'}>
         {todo.text}
       </span>
-      <button onClick={onRemove}>Remove</button>
+      {!hideActions && <button onClick={onRemove}>Remove</button>}
     </div>
   );
 }
@@ -24,6 +26,11 @@ TodoItem.propTypes = {
   }).isRequired,
   onToggle: PropTypes.func.isRequired,
   onRemove: PropTypes.func.isRequired,
+  hideActions: PropTypes.bool,
+};
+
+TodoItem.defaultProps = {
+  hideActions: false,
 };
 
 export default TodoItem;

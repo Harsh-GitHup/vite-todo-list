@@ -15,6 +15,11 @@ function TodoList() {
     setTodos(newTodos);
   };
 
+  const removeAllCompletedTodos = () => {
+    const newTodos = todos.filter(todo => !todo.completed);
+    setTodos(newTodos);
+  };
+
   const toggleTodo = (id) => {
     const newTodos = todos.map(todo =>
       todo.id === id ? { ...todo, completed: !todo.completed } : todo
@@ -30,7 +35,7 @@ function TodoList() {
       <AddTodo addTodo={addTodo} />
       {activeTodos.length > 0 ? (
         <>
-          <h2>Active Todos</h2>
+          <h3>Active Todos</h3>
           <ul>
             {activeTodos.map(todo => (
               <TodoItem
@@ -47,7 +52,8 @@ function TodoList() {
       )}
       {completedTodos.length > 0 && (
         <>
-          <h2>Completed Todos</h2>
+          <h3>Completed Todos</h3>
+          <button className="remove-all-button" onClick={removeAllCompletedTodos}>Remove All</button>
           <ul>
             {completedTodos.map(todo => (
               <TodoItem
@@ -55,6 +61,7 @@ function TodoList() {
                 todo={todo}
                 onToggle={() => toggleTodo(todo.id)}
                 onRemove={() => removeTodo(todo.id)}
+                hideActions={true}
               />
             ))}
           </ul>
