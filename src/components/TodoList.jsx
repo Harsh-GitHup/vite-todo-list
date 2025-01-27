@@ -43,7 +43,7 @@ function TodoList() {
           </ul>
         </>
       ) : (
-        <img src={noTodosImage} alt="No active todos" className="no-todos-image" />
+        <img src={noTodosImage} alt="No active todos" className="no-todos-image" loading="lazy" />
       )}
       {completedTodos.length > 0 && (
         <>
