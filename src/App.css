@@ -4,6 +4,16 @@ h1 {
   text-align: center;
 }
 
+h3 {
+  text-align: center;
+}
+
+h4 {
+  font-size: 1.25em;
+  margin: -0.5em 0;
+  text-align: center;
+}
+
 .add-todo {
   display: flex;
   align-items: center;
@@ -42,6 +52,8 @@ h1 {
 
 .completed {
   text-decoration: line-through;
+  text-align: center;
+  width: 100%;
   color: #4d4d4d;
   font-weight: 500;
   font-size: 1.1rem;
@@ -51,6 +63,12 @@ h1 {
   color: #ffffff;
   font-weight: 500;
   font-size: 1.1rem;
+}
+
+.remove-all-button {
+  display: block;
+  margin: 1.1em 0 0 auto;
+  padding: 0.6em 0.9em;
 }
 
 button {
@@ -79,8 +97,8 @@ input[type="text"] {
 
 img.no-todos-image {
   padding: 1rem;
-  width: 25rem;
-  height: 21.875rem;
+  width: 18.75rem;
+  height: 15.625rem;
   object-fit: contain;
   display: block;
   margin: 0 auto;
@@ -90,12 +108,5 @@ img.no-todos-image {
   img.no-todos-image {
     width: 100%;
     height: 12.5rem;
-  }
-}
-
-@media (max-width: 530px) and (min-width: 430px) {
-  img.no-todos-image {
-    width: 18.75rem;
-    height: 15.625rem;
   }
 }
