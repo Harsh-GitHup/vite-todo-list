@@ -15,7 +15,6 @@ function AddTodo({ addTodo }) {
         <div>
             <h2>Add Todo</h2>
             <div className="add-todo">
-                {/* <label htmlFor="todo-input">Enter a new todo:</label> */}
                 <input
                     type="text"
                     value={inputValue}
