@@ -11,17 +11,23 @@ function AddTodo({ addTodo }) {
         }
     };
 
+    const handleKeyDown = (e) => {
+        if (e.key === 'Enter') {
+            handleAddTodo();
+        }
+    };
+
     return (
-        <div>
-            <h2>Add Todo</h2>
+        <div className="add-todo-container">
             <div className="add-todo">
                 <input
                     type="text"
                     value={inputValue}
                     onChange={(e) => setInputValue(e.target.value)}
-                    placeholder="Add a new todo..."
+                    onKeyDown={handleKeyDown}
+                    placeholder="What needs to be done?"
                 />
-                <button onClick={handleAddTodo}>Add Todo</button>
+                <button className="btn-primary" onClick={handleAddTodo}>Add</button>
             </div>
         </div>
     );

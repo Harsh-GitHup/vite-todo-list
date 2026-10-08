@@ -7,7 +7,7 @@ function TodoList() {
   const [todos, setTodos] = useState([]);
 
   const addTodo = (text) => {
-    setTodos([...todos, { id: Date.now(), text, completed: false }]);
+    setTodos([{ id: Date.now(), text, completed: false }, ...todos]);
   };
 
   const removeTodo = (id) => {
@@ -33,9 +33,13 @@ function TodoList() {
   return (
     <div className="todo-list">
       <AddTodo addTodo={addTodo} />
+      
       {activeTodos.length > 0 ? (
-        <>
-          <h3>Active Todos</h3>
+        <div className="todos-section">
+          <div className="section-header">
+            <h3>Active Tasks</h3>
+            <span>{activeTodos.length} remaining</span>
+          </div>
           <ul>
             {activeTodos.map(todo => (
               <TodoItem
@@ -46,14 +50,22 @@ function TodoList() {
               />
             ))}
           </ul>
-        </>
+        </div>
       ) : (
-        <img src={noTodosImage} alt="No active todos" className="no-todos-image" loading="lazy" />
+        <div className="no-todos-container">
+          <img src={noTodosImage} alt="No active todos" className="no-todos-image" loading="lazy" />
+          <p className="no-todos-text">You&apos;re all caught up!</p>
+        </div>
       )}
+      
       {completedTodos.length > 0 && (
-        <>
-          <h3>Completed Todos</h3>
-          <button className="remove-all-button" onClick={removeAllCompletedTodos}>Remove All</button>
+        <div className="todos-section">
+          <div className="section-header">
+            <h3>Completed Tasks</h3>
+            <button className="btn-danger" onClick={removeAllCompletedTodos} style={{padding: '0.4rem 0.8rem', fontSize: '0.85rem'}}>
+              Clear All
+            </button>
+          </div>
           <ul>
             {completedTodos.map(todo => (
               <TodoItem
@@ -65,7 +77,7 @@ function TodoList() {
               />
             ))}
           </ul>
-        </>
+        </div>
       )}
     </div>
   );
